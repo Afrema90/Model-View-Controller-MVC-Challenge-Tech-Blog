@@ -1,0 +1,24 @@
+<!-- Loop over each object in the techs array -->
+{{#each techs as |tech| }}
+<div class="row mb-4 tech">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{!-- {{{get_emoji}}} --}}
+      <a href="/tech/{{tech.id}}">{{tech.name}}</a>
+    </h2>
+    {{!-- <p>
+      <span for="img" aria-label="money">💲</span>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="dollar-amount">{{format_amount tech.needed_funding}}</span>
+      needed!
+    </p> --}}
+    <p>Created by {{tech.user.name}} on {{format_date tech.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{tech.description}}
+    </p>
+  </div>
+</div>
+{{/each}}
