@@ -2,23 +2,22 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#tech-name').value.trim();
-  const needed_funding = document.querySelector('#tech-funding').value.trim();
   const description = document.querySelector('#tech-desc').value.trim();
 
-  if (name && needed_funding && description) {
+  if (name && description) {
     const response = await fetch(`/api/techs`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ name, description }),
       headers: {
         'Content-Type': 'application/json',
       },
     });
 
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to create tech');
-    }
+    //if (response.ok) {
+    //  document.location.replace('/profile');
+    //} else {
+     // alert('Failed to create tech');
+    //}
   }
 };
 
@@ -42,6 +41,6 @@ document
   .querySelector('.new-tech-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.tech-list')
-  .addEventListener('click', delButtonHandler);
+//document
+  //.querySelector('.tech-list')
+  //.addEventListener('click', delButtonHandler);
