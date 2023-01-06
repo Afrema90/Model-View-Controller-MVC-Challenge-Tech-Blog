@@ -41,6 +41,9 @@ document
   .querySelector('.new-tech-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.tech-list')
-  .addEventListener('click', delButtonHandler);
+  if (document.querySelector('.tech-list')){
+    document
+    .querySelector('.tech-list')
+    .addEventListener('click', delButtonHandler);
+   
+  }

@@ -10,13 +10,13 @@ router.get('/',(req, res) => {
   console.log(req.session);
 
   Post.findAll({
-    include: [
+   // include: [
      // 'id',
       //'title',
      // 'created_at',
       //'post_content'
-      User
-    ],
+     //User
+    //],
   //try {
     // Get all techs and JOIN with user data
     //const techData = await Tech.findAll({
@@ -37,6 +37,7 @@ router.get('/',(req, res) => {
     })
       .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
+        console.log(posts)
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn

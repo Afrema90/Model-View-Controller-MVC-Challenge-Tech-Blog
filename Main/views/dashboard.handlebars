@@ -27,17 +27,17 @@
     </form>
   </div>
 
-  {{#if techs.length}}
+  {{#if posts.length}}
   <div class="col-md-6 tech-list">
-    <h3>Current Techs:</h3>
+    <h3>Current Posts:</h3>
 
-    {{#each techs as |tech|}}
+    {{#each techs as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/tech/{{tech.id}}">{{tech.name}}</a></h4>
+        <h4><a href="/tech/{{post.id}}">{{post.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{tech.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
