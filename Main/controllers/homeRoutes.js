@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
+//const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
 
@@ -10,29 +10,30 @@ router.get('/',(req, res) => {
   console.log(req.session);
 
   Post.findAll({
-    attributes: [
-      'id',
-      'title',
-      'created_at',
-      'post_content'
+    include: [
+     // 'id',
+      //'title',
+     // 'created_at',
+      //'post_content'
+      User
     ],
   //try {
     // Get all techs and JOIN with user data
     //const techData = await Tech.findAll({
-      include: [
-        {
-          model: Comment,
-          attributes: ['id','comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username', 'twitter', 'github']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username', 'twitter', 'github']
-        }
-      ]
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes: ['id','comment_text', 'post_id', 'user_id', 'created_at'],
+      //     include: {
+      //       model: User,
+      //       attributes: ['username', 'twitter', 'github']
+      //     }
+      //   },
+      //   {
+      //     model: User,
+      //     attributes: ['username', 'twitter', 'github']
+      //   }
+      // ]
     })
       .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
