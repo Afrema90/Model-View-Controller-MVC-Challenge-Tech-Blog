@@ -11,7 +11,7 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const tech of techData) {
+  for (const tech of postData) {
     await Tech.create({
       ...tech,
       user_id: users[Math.floor(Math.random() * users.length)].id,
