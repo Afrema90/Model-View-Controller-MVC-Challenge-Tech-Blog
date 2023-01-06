@@ -1,4 +1,4 @@
-const seedPosts = require('./post-seeds.js');
+const seedPosts = require('./post-data.js');
 const seedUsers = require('./user-seeds.js');
 const seedComments = require('./comment-seed.js');
 
