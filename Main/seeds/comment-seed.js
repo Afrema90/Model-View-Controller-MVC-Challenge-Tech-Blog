@@ -1,7 +1,7 @@
 const { Comment } = require('../models');
 
-const userSeeds = require('./user-seed.js');
-const postseed = require('./post-seed.js');
+const userSeeds = require('./user-seeds');
+const postseed = require('./post-data');
 const { post } = require('../controllers');
 
 const seedDatabase = async () => {
