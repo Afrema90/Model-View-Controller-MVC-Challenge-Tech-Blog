@@ -13,11 +13,11 @@ const newFormHandler = async (event) => {
       },
     });
 
-    //if (response.ok) {
-    //  document.location.replace('/profile');
-    //} else {
-     // alert('Failed to create tech');
-    //}
+    if (response.ok) {
+     document.location.replace('/');
+    } else {
+     alert('Failed to create tech');
+    }
   }
 };
 
