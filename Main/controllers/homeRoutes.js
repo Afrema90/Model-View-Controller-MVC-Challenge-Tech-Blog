@@ -40,7 +40,7 @@ router.get('/',(req, res) => {
         console.log(posts)
         res.render('homepage', {
             posts,
-            loggedIn: req.session.loggedIn
+            logged_in: req.session.logged_in
           });
       })
       .catch(err => {
@@ -50,7 +50,7 @@ router.get('/',(req, res) => {
   });
 
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
       res.redirect('/');
       return;
     }
@@ -59,7 +59,7 @@ router.get('/login', (req, res) => {
   });
 
   router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
       res.redirect('/');
       return;
     }
@@ -105,7 +105,7 @@ router.get('/login', (req, res) => {
         // pass data to template
         res.render('single-post', {
             post,
-            loggedIn: req.session.loggedIn
+            logged_in: req.session.logged_in
           });
       })
       .catch(err => {

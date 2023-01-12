@@ -33,7 +33,8 @@ router.get('/', withAuth, (req, res) => {
       .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+        console.log(posts)
+        res.render('dashboard', { posts,  logged_in: req.session.logged_in});
       })
       .catch(err => {
         console.log(err);
@@ -41,29 +42,28 @@ router.get('/', withAuth, (req, res) => {
       });
   });
 
-  router.get('/edit/:id', withAuth, (req, res) => {
+  router.get('/blog/:id', withAuth, (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
       },
       attributes: [
         'id',
-        'title',
-        'created_at',
-        'post_content'
+        'name',
+        'description'
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'post_id', 'user_id'],
           include: {
             model: User,
-            attributes: ['username', 'twitter', 'github']
+            attributes: ['name']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter', 'github']
+          attributes: ['name']
         }
       ]
     })
@@ -75,10 +75,10 @@ router.get('/', withAuth, (req, res) => {
   
         // serialize the data
         const post = dbPostData.get({ plain: true });
-
-        res.render('edit-post', {
+        console.log(post)
+        res.render('blog', {
             post,
-            loggedIn: true
+            logged_in: req.session.logged_in
             });
       })
       .catch(err => {
@@ -117,7 +117,7 @@ router.get('/create/', withAuth, (req, res) => {
       .then(dbPostData => {
         // serialize data before passing to template
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('create-post', { posts, loggedIn: true });
+        res.render('create-post', { posts,  logged_in: req.session.logged_in });
       })
       .catch(err => {
         console.log(err);
