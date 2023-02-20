@@ -46,4 +46,4 @@ this a mock-up link https://drive.google.com/file/d/1rtUlfHJcS3KiWif1qhE4tB9jcfm
 
 link to githun: https://github.com/Afrema90/Model-View-Controller-MVC-Challenge-Tech-Blog
 
-The application is deployed on Heroku at 
+The application is deployed on Heroku at https://whispering-castle-00151.herokuapp.com/
